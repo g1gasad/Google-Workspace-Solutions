@@ -3,6 +3,11 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# creds
+gcp_creds_dataservice.json
+*.pickle
+*.pkl
+
 # C extensions
 *.so
 

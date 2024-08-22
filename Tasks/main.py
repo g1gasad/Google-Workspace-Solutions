@@ -3,7 +3,7 @@ import time
 from pprint import pprint
 from GOOGLE import Create_Service
 
-CLIENT_SECRET_FILE = 'credentials_desktop.json'
+CLIENT_SECRET_FILE = 'E:\Projects\End-to-End\Google-Workspace-Solutions\gcp_creds_dataservice.json'
 API_NAME = 'tasks'
 API_VERSION = 'v1'
 SCOPES = ["https://www.googleapis.com/auth/tasks", "https://www.googleapis.com/auth/spreadsheets"]
