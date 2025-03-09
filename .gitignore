@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# files
+tokens/
+
 # creds
 gcp_creds_dataservice.json
 *.pickle

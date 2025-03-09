@@ -1,5 +1,5 @@
 import pickle
-import os
+import os.path
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from google.auth.transport.requests import Request
@@ -20,7 +20,7 @@ def create_service(client_secret_file, api_name, api_version, scopes):
     """
     print(f"Creating service: {api_name} {api_version} with scopes: {scopes}")
 
-    pickle_file = f"token_{api_name}_{api_version}.pickle"
+    pickle_file = f"tokens/token_{api_name}_{api_version}.pickle"
     creds = None
 
     if os.path.exists(pickle_file):
@@ -43,7 +43,7 @@ def create_service(client_secret_file, api_name, api_version, scopes):
         if not creds or not creds.valid:
             try:
                 flow = InstalledAppFlow.from_client_secrets_file(client_secret_file, scopes)
-                creds = flow.run_local_server(port=0) #port=0 lets the OS pick an open port.
+                creds = flow.run_local_server(port=8080) #port=0 lets the OS pick an open port.
             except Exception as e:
                 print(f"Error during OAuth flow: {e}")
                 return None
@@ -57,7 +57,7 @@ def create_service(client_secret_file, api_name, api_version, scopes):
 
     try:
         service = build(api_name, api_version, credentials=creds)
-        print(f"{api_name} service created successfully.")
+        print(f"{api_name.upper()} service created successfully.\n")
         return service
     except Exception as e:
         print(f"Unable to connect to {api_name} API: {e}")
