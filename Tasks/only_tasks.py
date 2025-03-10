@@ -5,9 +5,9 @@ from GOOGLE import create_service
 load_dotenv()
 CLIENT_SECRET_FILE = os.getenv("CLIENT_SECRET_FILE")
 SCOPES = os.getenv("TASKS_SCOPES")
+TASK_LIST_ID = os.getenv(TASK_LIST_ID)
 API_NAME = 'tasks'
 API_VERSION = 'v1'
-my_tasks_list_id = 'MDIzMjY3NDgxNTg0OTU4ODE2ODc6MDow'
 service = create_service(CLIENT_SECRET_FILE, API_NAME, API_VERSION, SCOPES)
 task_manager = TaskManager(service=service)
 

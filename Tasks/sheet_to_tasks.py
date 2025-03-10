@@ -6,13 +6,13 @@ load_dotenv()
 CLIENT_SECRET_FILE = os.getenv("CLIENT_SECRET_FILE")
 TASKS_SCOPES = os.getenv("TASKS_SCOPES").split(',') #splits the string into a list.
 SHEETS_SCOPES = os.getenv("SHEETS_SCOPES").split(',') #splits the string into a list.
+SPREADSHEET_ID = os.getenv("SPREADSHEET_ID")
 # Create service instance for Google Tasks
 TASKS_API_NAME, SHEETS_API_NAME = 'tasks', 'sheets'
 TASKS_API_VERSION, SHEETS_API_VERSION = 'v1', 'v4'
 tasks_service = create_service(CLIENT_SECRET_FILE, TASKS_API_NAME, TASKS_API_VERSION, TASKS_SCOPES)
 sheets_service = create_service(CLIENT_SECRET_FILE, SHEETS_API_NAME, SHEETS_API_VERSION, SHEETS_SCOPES)
 SHEET_NAME = "To_accomplish!C2:F22"
-SPREADSHEET_ID = "1wIS4jNhBDNgmFwlu8h344NSbosh_DqEzlXVf4Nmfyko"
 
 sheet_manager = SheetManager(sheets_service, SPREADSHEET_ID, SHEET_NAME)
 tmgr = TaskManager(tasks_service)
